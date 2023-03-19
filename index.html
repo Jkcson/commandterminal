@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <style>
+      body {
+        background-color: black;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username"><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+      <input type="submit" value="Submit" onclick="validateLogin()">
+    </form>
+    
+    <script>
+      function validateLogin() {
+        // Get the values entered in the input fields
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        
+        // Check if the credentials are valid
+        if (username === "example" && password === "password") {
+          // Redirect to the command terminal page
+          window.location.href = "command-terminal.html";
+        } else {
+          alert("Invalid username or password");
+        }
+      }
+    </script>
+  </body>
+</html>

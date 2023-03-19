@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Command Terminal</title>
+    <style>
+      body {
+        background-color: black;
+        color: green;
+        font-family: monospace;
+      }
+      
+      #container {
+        height: 500px;
+        overflow-y: scroll;
+      }
+      
+      input {
+        border: none;
+        background-color: black;
+        color: green;
+        width: 100%;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Command Terminal</h1>
+    <div id="container"></div>
+    <input type="text" id="command" onkeydown="handleCommand(event)">
+    
+    <script>
+      function handleCommand(event) {
+        if (event.keyCode === 13) {
+          // Get the entered command
+          var command = document.getElementById("command").value;
+          
+          // Display the entered command in the container element
+          var container = document.getElementById("container");
+          var commandElement = document.createElement("p");
+          commandElement.innerText = "$ " + command;
+          container.appendChild(commandElement);
+          
+          // Clear the command input field
+          document.getElementById("command").value = "";
+          
+          // Create a new input field for the next command
+          var newCommandInput = document.createElement("input");
+          newCommandInput.type = "text";
+          newCommandInput.id = "command";
+          newCommandInput.onkeydown = handleCommand;
+          container.appendChild(newCommandInput);
+          
+          // Scroll to the bottom of the container element
+          container.scrollTop = container.scrollHeight;
+        }
+      }
+    </script>
+  </body>
+</html>
